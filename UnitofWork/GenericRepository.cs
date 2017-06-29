@@ -24,13 +24,14 @@ namespace UnitofWork
 
             _objectSet = entities.Set<S>();
 
+           
 
 
 
-        }
-    
+    }
 
-        public IEnumerable<S> GetAll(Func<S, bool> predicate = null)
+
+    public IEnumerable<S> GetAll(Func<S, bool> predicate = null)
         {
             if (predicate != null)
             {
@@ -57,15 +58,10 @@ namespace UnitofWork
 
         public void Attach(S entity)
         {
+           
 
-
-
-           entities.Entry(entity).State = EntityState.Modified;
-
-            entities.SaveChanges();
             _objectSet.Attach(entity);
-
-          
+            entities.Entry(entity).State = EntityState.Modified;
 
 
         }
@@ -74,14 +70,8 @@ namespace UnitofWork
 
         public void Delete(S entity)
         {
-
-
-            //Contact conts = entities.S.Find(entity);
-
-            //entities.Contacts.Remove(conts);
-
-            var r = _objectSet.Find(entity);
-            _objectSet.Remove(r);
+     
+            _objectSet.Remove(entity);
 
           
         }
