@@ -10,119 +10,118 @@ using UnitofWork;
 
 namespace UnitofWork.Controllers
 {
-    public class Contacts2Controller : Controller
+    public class CaseStudiesController : Controller
     {
-        private ContactsRepository repo = new ContactsRepository();
+        private asoEntities db = new asoEntities();
 
-        // GET: Contacts2
+        // GET: GenericCaseStudies
         public ActionResult Index()
         {
-            return View(repo.GetAll().ToList());
+            return View(db.CaseStudies.ToList());
         }
 
-        // GET: Contacts2/Details/5
+        // GET: GenericCaseStudies/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            
-
-
-
-            Contact contact = repo.Get(c => c.ID == id);
-            if (contact == null)
+            CaseStudy caseStudy = db.CaseStudies.Find(id);
+            if (caseStudy == null)
             {
                 return HttpNotFound();
             }
-            return View(contact);
+            return View(caseStudy);
         }
-    
 
-        // GET: Contacts2/Create
+        // GET: GenericCaseStudies/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Contacts2/Create
+        // POST: GenericCaseStudies/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,ContactNumber,Address")] Contact contact)
+        public ActionResult Create([Bind(Include = "id,PageName,title_seo,desc_seo,key_seo,banner_img,Title,Mail_Content,footer,created_date,Category")] CaseStudy caseStudy)
         {
             if (ModelState.IsValid)
             {
-                repo.Add(contact);
-                repo.SaveChanges();
+                db.CaseStudies.Add(caseStudy);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(contact);
+            return View(caseStudy);
         }
 
-        // GET: Contacts2/Edit/5
+        // GET: GenericCaseStudies/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contact contact = repo.Get(c => c.ID == id);
-            if (contact == null)
+            CaseStudy caseStudy = db.CaseStudies.Find(id);
+            if (caseStudy == null)
             {
                 return HttpNotFound();
             }
-            return View(contact);
+            return View(caseStudy);
         }
 
-        // POST: Contacts2/Edit/
+        // POST: GenericCaseStudies/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,ContactNumber,Address")] Contact contact)
+        public ActionResult Edit([Bind(Include = "id,PageName,title_seo,desc_seo,key_seo,banner_img,Title,Mail_Content,footer,created_date,Category")] CaseStudy caseStudy)
         {
             if (ModelState.IsValid)
             {
-                repo.Attach(contact);
-
-                repo.SaveChanges();
+                db.Entry(caseStudy).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(contact);
+            return View(caseStudy);
         }
 
-        // GET: Contacts2/Delete/5
+        // GET: GenericCaseStudies/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            Contact contact = repo.Get(c => c.ID == id);
-            if (contact == null)
+            CaseStudy caseStudy = db.CaseStudies.Find(id);
+            if (caseStudy == null)
             {
                 return HttpNotFound();
             }
-            return View(contact);
+            return View(caseStudy);
         }
 
-        // POST: Contacts2/Delete/5
+        // POST: GenericCaseStudies/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-
-
-            Contact contact = repo.Get(c=>c.ID==id);
-            repo.SaveChanges();
+            CaseStudy caseStudy = db.CaseStudies.Find(id);
+            db.CaseStudies.Remove(caseStudy);
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 
-       
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }

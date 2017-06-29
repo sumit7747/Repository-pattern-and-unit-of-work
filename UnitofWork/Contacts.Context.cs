@@ -26,6 +26,6 @@ namespace UnitofWork
         }
     
         public virtual DbSet<Contact> Contacts { get; set; }
-        public object ObjectStateManager { get; internal set; }
+        public virtual DbSet<CaseStudy> CaseStudies { get; set; }
     }
 }

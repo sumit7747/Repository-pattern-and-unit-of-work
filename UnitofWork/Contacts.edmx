@@ -4,7 +4,23 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="asoModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="asoModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CaseStudy">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PageName" Type="nvarchar" MaxLength="4000" />
+          <Property Name="title_seo" Type="nvarchar" MaxLength="4000" />
+          <Property Name="desc_seo" Type="nvarchar" MaxLength="4000" />
+          <Property Name="key_seo" Type="nvarchar" MaxLength="4000" />
+          <Property Name="banner_img" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Title" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Mail_Content" Type="nvarchar" MaxLength="4000" />
+          <Property Name="footer" Type="nvarchar" MaxLength="4000" />
+          <Property Name="created_date" Type="date" />
+          <Property Name="Category" Type="nvarchar" MaxLength="4000" />
+        </EntityType>
         <EntityType Name="Contacts">
           <Key>
             <PropertyRef Name="ID" />
@@ -16,10 +32,10 @@
           <Property Name="Address" Type="nvarchar" MaxLength="450" />
         </EntityType>
         <EntityContainer Name="asoModel1StoreContainer">
+          <EntitySet Name="CaseStudy" EntityType="Self.CaseStudy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="asoModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -35,7 +51,24 @@
         </EntityType>
         <EntityContainer Name="asoEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Contacts" EntityType="Self.Contact" />
+          <EntitySet Name="CaseStudies" EntityType="asoModel1.CaseStudy" />
         </EntityContainer>
+        <EntityType Name="CaseStudy">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PageName" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="title_seo" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="desc_seo" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="key_seo" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="banner_img" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Mail_Content" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="footer" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="created_date" Type="DateTime" Precision="0" />
+          <Property Name="Category" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -50,6 +83,23 @@
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CaseStudies">
+            <EntityTypeMapping TypeName="asoModel1.CaseStudy">
+              <MappingFragment StoreEntitySet="CaseStudy">
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="footer" ColumnName="footer" />
+                <ScalarProperty Name="Mail_Content" ColumnName="Mail_Content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="banner_img" ColumnName="banner_img" />
+                <ScalarProperty Name="key_seo" ColumnName="key_seo" />
+                <ScalarProperty Name="desc_seo" ColumnName="desc_seo" />
+                <ScalarProperty Name="title_seo" ColumnName="title_seo" />
+                <ScalarProperty Name="PageName" ColumnName="PageName" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -1,0 +1,98 @@
+﻿@model UnitofWork.CaseStudy
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CaseStudy</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PageName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PageName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.title_seo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.title_seo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.desc_seo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.desc_seo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.key_seo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.key_seo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.banner_img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.banner_img)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mail_Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mail_Content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.footer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.footer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.created_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.created_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -197,6 +197,9 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="CaseStudy.cs">
+      <DependentUpon>Contacts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Contact.cs">
       <DependentUpon>Contacts.tt</DependentUpon>
     </Compile>
@@ -215,12 +218,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Contacts.edmx</DependentUpon>
     </Compile>
-    <Compile Include="ContactsRepository.cs" />
-    <Compile Include="ContactsRepositoryWithUow.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\Contacts2Controller.cs" />
-    <Compile Include="Controllers\ContactsController.cs" />
-    <Compile Include="Controllers\ContactsUowController.cs" />
+    <Compile Include="Controllers\CaseStudiesController.cs" />
+    <Compile Include="Controllers\GenericCaseStudiesController.cs" />
     <Compile Include="Controllers\GenericContactsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -250,7 +250,6 @@
       <DependentUpon>SampleDbEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
-    <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Contacts.Context.tt">
@@ -265,6 +264,7 @@
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="databasescript.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -344,26 +344,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Contacts\Create.cshtml" />
-    <Content Include="Views\Contacts\Delete.cshtml" />
-    <Content Include="Views\Contacts\Details.cshtml" />
-    <Content Include="Views\Contacts\Edit.cshtml" />
-    <Content Include="Views\Contacts\Index.cshtml" />
-    <Content Include="Views\Contacts2\Create.cshtml" />
-    <Content Include="Views\Contacts2\Delete.cshtml" />
-    <Content Include="Views\Contacts2\Details.cshtml" />
-    <Content Include="Views\Contacts2\Edit.cshtml" />
-    <Content Include="Views\Contacts2\Index.cshtml" />
-    <Content Include="Views\ContactsUow\Create.cshtml" />
-    <Content Include="Views\ContactsUow\Delete.cshtml" />
-    <Content Include="Views\ContactsUow\Details.cshtml" />
-    <Content Include="Views\ContactsUow\Edit.cshtml" />
-    <Content Include="Views\ContactsUow\Index.cshtml" />
     <Content Include="Views\GenericContacts\Create.cshtml" />
     <Content Include="Views\GenericContacts\Delete.cshtml" />
     <Content Include="Views\GenericContacts\Details.cshtml" />
     <Content Include="Views\GenericContacts\Edit.cshtml" />
     <Content Include="Views\GenericContacts\Index.cshtml" />
+    <Content Include="Views\GenericCaseStudies\Create.cshtml" />
+    <Content Include="Views\GenericCaseStudies\Delete.cshtml" />
+    <Content Include="Views\GenericCaseStudies\Details.cshtml" />
+    <Content Include="Views\GenericCaseStudies\Edit.cshtml" />
+    <Content Include="Views\GenericCaseStudies\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
